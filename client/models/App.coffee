@@ -19,6 +19,8 @@ class window.App extends Backbone.Model
     	@initialize()
     @get('playerHand').on 'bust', =>
     	alert('BUSTED!!! YOU LOSE!!!')
+    @get('dealerHand').on 'bust', =>
+    	alert('DEALER BUSTED!!! YOU WIN!!!')
 
 
 

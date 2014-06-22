@@ -16,17 +16,10 @@ class window.AppView extends Backbone.View
   initialize: ->
     @render()
 
-  dealerCss: 
-    'float': 'right'
-
-  playerCss:
-    'float': 'left'
-
   render: ->
     @$el.children().detach()
     @$el.html @template()
     @$('.player-hand-container').html new HandView(collection: @model.get 'playerHand').el
     @$('.dealer-hand-container').html new HandView(collection: @model.get 'dealerHand').el
     @$('body').css('background-image', 'url("img/blackjacktable.jpg")')
-    @$('.dealer-hand-container').css(@dealerCss)
-    @$('.player-hand-container').css(@playerCss)
+
