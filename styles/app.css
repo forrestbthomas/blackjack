@@ -12,5 +12,27 @@
 }
 
 .hand {
+  width: 100%;
+  height: 100%;
   overflow: auto;
+}
+
+body {
+	background-color: green;
+}
+
+.hit-button {
+	position: absolute;
+	top: 15px;
+	left: 500px;
+}
+.stand-button {
+	position: absolute;
+	top: 15px;
+	left: 550px;
+}
+.deal-button {
+	position: absolute;
+	top: 15px;
+	left: 620px;
 }

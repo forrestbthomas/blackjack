@@ -6,10 +6,20 @@ class window.App extends Backbone.Model
     @set 'playerHand', deck.dealPlayer()
     @set 'dealerHand', deck.dealDealer()
     @get('playerHand').on 'stand', =>
-    	while @get('dealerHand').scores() < 16 
-    		@get('dealerHand').hit()
+	    dealersHand = @get('dealerHand')
+    	if dealersHand.models[0].get('revealed') == false then dealersHand.models[0].flip()
+    	if @get('dealerHand').scores().length == 2
+    		while (@get('dealerHand').scores()[0] < 16 || @get('dealerHand').scores()[1] < 16)
+    		    @get('dealerHand').hit()
+    	else
+    	    if @get('dealerHand').scores() < 16
+    	        @get('dealerHand').hit()
+    	        @get('playerHand').stand()
     @get('dealerHand').on 'deal', =>
     	@initialize()
+    @get('playerHand').on 'bust', =>
+    	alert('BUSTED!!! YOU LOSE!!!')
+
 
 
 

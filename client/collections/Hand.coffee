@@ -4,8 +4,19 @@ class window.Hand extends Backbone.Collection
 
   initialize: (array, @deck, @isDealer) ->
 
+  bestScore: ->
+    scoreOne = 21 - @scores()[0]
+    scoreTwo = 21 - @scores()[1]
+    return scoreOne if scoreOne < scoreTwo && scoreOne > 0 && scoreTwo != undefined
+    scoreTwo 
+
   hit: ->
     @add(@deck.pop()).last()
+    # @bestScore()
+    @bust()
+  
+  bust: ->
+    if @scores() > 21 then @trigger 'bust', @
 
   stand: ->
     @trigger 'stand', @ 
